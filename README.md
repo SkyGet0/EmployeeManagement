@@ -3,7 +3,7 @@
 ![Статус](https://img.shields.io/badge/Статус-Завершён-brightgreen)
 ![Лицензия](https://img.shields.io/badge/Лицензия-MIT-blue)
 ![Версия](https://img.shields.io/badge/Версия-1.0.0-purple)
-![Тесты](https://img.shields.io/badge/Тесты-20%20проходят-brightgreen)
+![Тесты](https://img.shields.io/badge/Тесты-20%20успешных-brightgreen)
 ![Покрытие](https://img.shields.io/badge/Покрытие-100%25-brightgreen)
 
 Комплексное **full-stack веб-приложение** для управления сотрудниками с современной аутентификацией, полными CRUD операциями, расширенным поиском и адаптивным интерфейсом.
