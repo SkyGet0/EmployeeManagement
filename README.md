@@ -126,8 +126,9 @@ EmployeeManagement/
 │ │ └── AuthServiceTests.cs # 7 тестов
 │ └── Mocks/
 │ └── MockEmployeeRepository.cs # Тестовый двойник
-│
-└── employee_management.frontend/ # React Frontend
+└──
+
+[ employee_management.frontend/ # React Frontend ]
 ├── src/
 │ ├── components/
 │ │ ├── EmployeeList.jsx # Список с пагинацией
