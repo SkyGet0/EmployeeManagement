@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using AutoMapper;
+﻿using AutoMapper;
 using EmployeeManagement.Core.DTOs;
 using EmployeeManagement.Core.Models;
 using EmployeeManagement.Core.Repositories;

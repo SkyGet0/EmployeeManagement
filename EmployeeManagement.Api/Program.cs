@@ -51,7 +51,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// CORS (для frontend)
+// CORS (frontend)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
