@@ -56,14 +56,15 @@
 ## Технологический стек
 
 ### Backend
-
-- **ASP.NET Core** 10.0.1 : Фреймворк Web API
-- **C#** 12.0 : Язык программирования
-- **Entity Framework Core** 10.0.1 : ORM и работа с БД
-- **SQL Server** (LocalDB) : База данных
-- **JWT** (System.IdentityModel) : Аутентификация
-- **xUnit** : Unit тестирование
-- **AutoMapper** 12.0.1 : Маппинг объектов
+| Технология | Версия | Назначение |
+|------------|--------|------------|
+| **ASP.NET Core** | 10.0+ | Фреймворк Web API |
+| **C#** | 12.0 | Язык программирования |
+| **Entity Framework Core** | 10.0 | ORM и работа с БД |
+| **SQL Server** | LocalDB | База данных |
+| **JWT** | System.IdentityModel | Аутентификация |
+| **xUnit** | 2.9.3 | Unit тестирование |
+| **AutoMapper** | 12.0.1 | Маппинг объектов |
 
 ### Frontend
 | Технология | Назначение |
@@ -84,7 +85,7 @@
 ---
 
 ## Структура проекта
-
+```
 EmployeeManagement/
 │
 ├── EmployeeManagement.Api/ # ASP.NET Core API
@@ -140,3 +141,4 @@ EmployeeManagement/
 │ ├── App.jsx # Главный компонент
 │ └── index.js # Точка входа
 └── package.json # Зависимости
+```
