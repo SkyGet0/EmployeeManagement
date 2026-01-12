@@ -76,9 +76,10 @@ namespace EmployeeManagement.Api.Controllers
         }
 
         /// <summary>
-        /// Create new employee
+        /// Create a new employee
         /// </summary>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<EmployeeDto>> Create([FromBody] CreateEmployeeDto dto)
         {
             if (!ModelState.IsValid)
@@ -103,6 +104,7 @@ namespace EmployeeManagement.Api.Controllers
         /// Update employee
         /// </summary>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateEmployeeDto dto)
         {
             if (!ModelState.IsValid)
@@ -131,6 +133,7 @@ namespace EmployeeManagement.Api.Controllers
         /// Delete employee
         /// </summary>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try

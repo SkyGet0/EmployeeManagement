@@ -3,6 +3,7 @@ using EmployeeManagement.Core.Repositories;
 using EmployeeManagement.Core.Services;
 using EmployeeManagement.Data;
 using EmployeeManagement.Data.Repositories;
+using EmployeeManagement.Data.Seeders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -69,6 +70,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+// Seed database
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate(); // migrating
+    DataSeeder.SeedData(context); // adding a start data set
 }
 
 app.UseHttpsRedirection();
