@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EmployeeManagement.Core.Models
+﻿namespace EmployeeManagement.Core.Models
 {
     public class Department
     {
