@@ -125,8 +125,8 @@ EmployeeManagement/
 │ │ ├── EmployeeServiceTests.cs # 13 тестов
 │ │ └── AuthServiceTests.cs # 7 тестов
 │ └── Mocks/
-│ └── MockEmployeeRepository.cs # Тестовый двойник
-└──
+[ └── MockEmployeeRepository.cs # Тестовый двойник
+
 
 [ employee_management.frontend/ # React Frontend ]
 ├── src/
