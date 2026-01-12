@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using EmployeeManagement.Core.Models;
+﻿using EmployeeManagement.Core.Models;
 
 namespace EmployeeManagement.Core.Repositories
 {

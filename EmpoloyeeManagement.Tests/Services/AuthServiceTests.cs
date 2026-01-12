@@ -69,7 +69,7 @@ namespace EmployeeManagement.Tests.Services
                 Username = "testuser",
                 Email = "test@example.com",
                 Password = "Password123",
-                ConfirmPassword = "Password456" // Не совпадает!
+                ConfirmPassword = "Password456" // not matching
             };
 
             // Act
@@ -94,7 +94,7 @@ namespace EmployeeManagement.Tests.Services
 
             var registerDto2 = new RegisterRequestDto
             {
-                Username = "testuser", // Тот же username!
+                Username = "testuser", // existing username
                 Email = "test2@example.com",
                 Password = "Password123",
                 ConfirmPassword = "Password123"
@@ -124,7 +124,7 @@ namespace EmployeeManagement.Tests.Services
             var registerDto2 = new RegisterRequestDto
             {
                 Username = "user2",
-                Email = "test@example.com", // Тот же email!
+                Email = "test@example.com", // existing email
                 Password = "Password123",
                 ConfirmPassword = "Password123"
             };
@@ -144,7 +144,7 @@ namespace EmployeeManagement.Tests.Services
         [Fact]
         public async Task LoginAsync_WithValidCredentials_ReturnsSuccessWithToken()
         {
-            // Arrange - сначала регистрируем пользователя
+            // Arrange
             var registerDto = new RegisterRequestDto
             {
                 Username = "testuser",
@@ -185,7 +185,7 @@ namespace EmployeeManagement.Tests.Services
             var loginDto = new LoginRequestDto
             {
                 Username = "testuser",
-                Password = "WrongPassword" // Неправильный пароль!
+                Password = "WrongPassword" // wrong password
             };
 
             // Act

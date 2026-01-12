@@ -75,7 +75,7 @@ namespace EmployeeManagement.Tests.Services
             {
                 FirstName = "Jane",
                 LastName = "Smith",
-                Email = "john@example.com", // Same email!
+                Email = "john@example.com", // Same email
                 Salary = 80000,
                 Department = "HR"
             };
@@ -316,7 +316,7 @@ namespace EmployeeManagement.Tests.Services
         [Fact]
         public async Task CreateAsync_FromForm_WithAllFields_SuccessfullyCreates()
         {
-            // Arrange - эмулируем CreateEmployeeForm
+            // Arrange - emulate CreateEmployeeForm
             var createDto = new CreateEmployeeDto
             {
                 FirstName = "Jane",

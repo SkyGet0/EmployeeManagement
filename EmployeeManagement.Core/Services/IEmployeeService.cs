@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using EmployeeManagement.Core.DTOs;
+﻿using EmployeeManagement.Core.DTOs;
 
 namespace EmployeeManagement.Core.Services
 {
