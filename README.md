@@ -134,7 +134,7 @@ EmployeeManagement/
 [ employee_management.frontend/ # React Frontend ]
 ├── src/
 │ ├── components/
-│ │ ├── Navbar.jsx # Список с пагинацией
+│ │ ├── Navbar.jsx # Навигационная панель
 │ │ ├── EmployeeList.jsx # Список с пагинацией
 │ │ ├── EmployeeForm.jsx # Форма создания/редактирования
 │ │ ├── Login.jsx # Страница логина
