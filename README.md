@@ -600,10 +600,10 @@ dotnet run
 #    Password: AdminPassword123
 
 # 4. Проверьте:
-✅ Navbar показывает "Admin"
-✅ Кнопка "+ Add Employee" видна
-✅ Кнопки "Edit" и "Delete" видны
-✅ Можете создавать новых сотрудников
+- Navbar показывает "Admin"
+- Кнопка "+ Add Employee" видна
+- Кнопки "Edit" и "Delete" видны
+- Можете создавать новых сотрудников
 ```
 
 **Тестовый сценарий 2: Проверка Employee доступа**
@@ -615,10 +615,10 @@ dotnet run
 #    Password: EmployeePassword123
 
 # 3. Проверьте:
-✅ Navbar показывает "Employee"
-✅ Кнопка "+ Add Employee" скрыта
-✅ Кнопки "Edit" и "Delete" скрыты
-✅ Видите только информацию о сотрудниках (read-only)
+- Navbar показывает "Employee"
+- Кнопка "+ Add Employee" скрыта
+- Кнопки "Edit" и "Delete" скрыты
+- Видите только информацию о сотрудниках (read-only)
 ```
 
 ### Покрытие тестами
