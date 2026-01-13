@@ -278,7 +278,7 @@ npm start
 Username: admin
 Password: AdminPassword123
 
-# ИЛИ залогиньтесь под Employee
+# Или залогиньтесь под Employee
 Username: employee
 Password: EmployeePassword123
 ```
@@ -327,11 +327,8 @@ Content-Type: application/json
   "password": "SecurePassword123",
   "confirmPassword": "SecurePassword123"
 }
-```
 
-**Успешный ответ (200 OK):**
-
-```json
+Response (200 OK):
 {
   "success": true,
   "message": "Registration successful",
@@ -413,11 +410,8 @@ Content-Type: application/json
   "username": "johnsmith",
   "password": "SecurePassword123"
 }
-```
 
-**Успешный ответ (200 OK):**
-
-```json
+Response (200 OK):
 {
   "success": true,
   "message": "Login successful",
@@ -445,7 +439,7 @@ Authorization: Bearer {ваш_JWT_токен}
 
 ***
 
-#### Получить список сотрудников (с пагинацией, поиском и фильтрацией)
+#### Получить список сотрудников (с поиском и фильтрацией)
 
 **Запрос:**
 
@@ -461,7 +455,7 @@ Authorization: Bearer {token}
 - `department` — фильтр по отделу (опционально)
 - `searchTerm` — поиск по имени/фамилии/email (опционально)
 
-**Ответ (200 OK):**
+**Response (200 OK):**
 
 ```json
 {
@@ -492,7 +486,7 @@ GET /api/employees/1
 Authorization: Bearer {token}
 ```
 
-**Ответ (200 OK):**
+**Response (200 OK):**
 
 ```json
 {
@@ -530,7 +524,7 @@ Content-Type: application/json
 }
 ```
 
-**Успешный ответ (201 Created):**
+**Response (201 Created):**
 
 ```json
 {
@@ -569,7 +563,7 @@ Content-Type: application/json
 }
 ```
 
-**Ответ (204 No Content):** без тела.
+**Response (204 No Content):** без тела.
 
 ***
 
@@ -580,7 +574,7 @@ DELETE /api/employees/1
 Authorization: Bearer {token}
 ```
 
-**Ответ (204 No Content)**
+**Response (204 No Content)**
 
 ---
 
