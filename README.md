@@ -746,14 +746,14 @@ React Frontend  →  HTTP Request  →  API Controller
          │
     ┌────┴──────────────┐
     ↓                   ↓
-┌──────────┐        ┌──────────┐
-│  Admin   │        │ Employee │
-│          │        │          │
-│ ✅ GET   │        │ ✅ GET   │
-│ ✅ POST  │        │ ❌ POST  │
-│ ✅ PUT   │        │ ❌ PUT   │
-│ ✅ DELETE│        │ ❌ DELETE│
-└───────────┘        └──────────┘
+┌───────────┐        ┌────────────┐
+│  Admin    │        │  Employee  │
+│           │        │            │
+│ ✅ GET    │        │ ✅ GET    │
+│ ✅ POST   │        │ ❌ POST   │
+│ ✅ PUT    │        │ ❌ PUT    │
+│ ✅ DELETE │        │ ❌ DELETE │
+└───────────┘         └───────────┘
 ```
 
 ### Принципы SOLID
