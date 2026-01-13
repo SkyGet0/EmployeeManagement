@@ -449,9 +449,8 @@ Authorization: Bearer {token}
 - `department` — фильтр по отделу (опционально)
 - `searchTerm` — поиск по имени/фамилии/email (опционально)
 
-**Response (200 OK):**
-
-```json
+```http
+Response (200 OK):
 {
   "data": [
     {
