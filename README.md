@@ -135,7 +135,7 @@ EmployeeManagement/
 ├── src/
 │ ├── components/
 │ │ ├── Navbar.jsx # Навигационная панель
-│ │ ├── EmployeeList.jsx # Список с пагинацией
+│ │ ├── EmployeeList.jsx # Список сотрудников
 │ │ ├── EmployeeForm.jsx # Форма создания/редактирования
 │ │ ├── Login.jsx # Страница логина
 │ │ └── Register.jsx # Страница регистрации
