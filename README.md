@@ -315,8 +315,6 @@ dotnet run
 
 #### Регистрация пользователя
 
-**Запрос:**
-
 ```http
 POST /api/auth/register
 Content-Type: application/json
@@ -400,8 +398,6 @@ Response (200 OK):
 
 #### Логин пользователя
 
-**Запрос:**
-
 ```http
 POST /api/auth/login
 Content-Type: application/json
@@ -440,8 +436,6 @@ Authorization: Bearer {ваш_JWT_токен}
 ***
 
 #### Получить список сотрудников (с поиском и фильтрацией)
-
-**Запрос:**
 
 ```http
 GET /api/employees?pageNumber=1&pageSize=10&department=IT&searchTerm=john
@@ -484,11 +478,8 @@ Authorization: Bearer {token}
 ```http
 GET /api/employees/1
 Authorization: Bearer {token}
-```
 
-**Response (200 OK):**
-
-```json
+Response (200 OK):
 {
   "id": 1,
   "firstName": "John",
@@ -522,11 +513,8 @@ Content-Type: application/json
   "salary": 85000,
   "department": "HR"
 }
-```
 
-**Response (201 Created):**
-
-```json
+Response (201 Created):
 {
   "id": 2,
   "firstName": "Jane",
@@ -561,9 +549,10 @@ Content-Type: application/json
   "department": "IT",
   "isActive": true
 }
+
+Response (204 No Content)
 ```
 
-**Response (204 No Content):** без тела.
 
 ***
 
@@ -572,9 +561,9 @@ Content-Type: application/json
 ```http
 DELETE /api/employees/1
 Authorization: Bearer {token}
-```
 
-**Response (204 No Content)**
+Response (204 No Content)
+```
 
 ---
 
