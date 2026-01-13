@@ -115,10 +115,12 @@ EmployeeManagement/
 │ └── IEmployeeRepository.cs # Интерфейс доступа к данным
 │
 ├── EmployeeManagement.Data/ # Слой доступа к данным
-│ ├── Repositories/
-│ │ └── EmployeeRepository.cs # Реализация доступа к данным
-│ ├── Migrations/ # Миграции БД
-│ └── ApplicationDbContext.cs # EF Core DbContext
+│   ├── Repositories/
+│   │   └── EmployeeRepository.cs # Реализация доступа к данным
+│   ├── Seeders/
+│   │   └── DataSeeder.cs # Начальные данные (Admin, Employee, тестовые сотрудники)
+│   ├── Migrations/ # Миграции БД
+│   └── ApplicationDbContext.cs # EF Core DbContext
 │
 ├── EmployeeManagement.Tests/ # Unit тесты
 │ ├── Services/
@@ -173,17 +175,17 @@ cd EmployeeManagement.Api
 # 2. Восстановить NuGet пакеты
 dotnet restore
 
-# 3. Применить миграции к базе данных
-dotnet ef database update
-
-# 4. Запустить API
+# 3. Запустить приложение (БД создаётся + миграции + seed данные автоматически)
 dotnet run
 ```
 
-После запуска:
+**API запустится по адресу:** `https://localhost:7xxx`
 
-- API будет доступен по адресу, например:  
-  `https://localhost:7xxx`
+> **Важно:** при первом запуске приложение автоматически:
+> - Создаст базу данных (если её нет)
+> - Применит все миграции
+> - Добавит начальные данные (seeder)
+
 - Swagger UI (документация) будет доступен по адресу:  
   `https://localhost:7xxx/swagger`
 
@@ -248,6 +250,54 @@ npm start
 
 ***
 
+### Начальные данные
+
+При первом запуске приложения **автоматически создаются** следующие данные:
+
+#### Тестовые пользователи:
+
+| Username | Email | Пароль | Роль |
+|----------|-------|--------|------|
+| **admin** | admin@example.com | AdminPassword123 | Admin |
+| **employee** | employee@example.com | EmployeePassword123 | Employee |
+
+#### Тестовые сотрудники:
+
+| ID | Имя | Email | Зарплата | Отдел |
+|----|------|-------|----------|-------|
+| 1 | John Doe | john.doe@example.com | $80,000 | IT |
+| 2 | Jane Smith | jane.smith@example.com | $75,000 | HR |
+| 3 | Bob Johnson | bob.johnson@example.com | $70,000 | Sales |
+
+#### Использование:
+
+```bash
+# Залогиньтесь под Admin
+Username: admin
+Password: AdminPassword123
+
+# ИЛИ залогиньтесь под Employee
+Username: employee
+Password: EmployeePassword123
+```
+
+#### Пересоздание БД:
+
+Если нужно очистить БД и пересоздать с начальными данными:
+
+```bash
+# Способ 1: Просто пересоздайте БД через SQL Server Management Studio
+# - Найдите EmployeeManagementDb
+# - Удалите (Drop Database)
+# - Запустите приложение: dotnet run
+# - БД пересоздастся с seeder данными
+
+# Способ 2: Через команду (из папки EmployeeManagement.Api)
+dotnet ef database drop --force --project ../EmployeeManagement.Data
+dotnet ef database update --project ../EmployeeManagement.Data
+dotnet run
+```
+
 ## Документация API
 
 ### Базовый URL
@@ -288,6 +338,60 @@ Content-Type: application/json
     "id": 1,
     "username": "johnsmith",
     "email": "john@example.com",
+    "role": "Employee"
+  }
+}
+```
+
+***
+
+#### Тестирование с Seed данными
+
+Вместо создания новых пользователей можно использовать готовые:
+
+**Admin пользователь (для создания/редактирования):**
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "AdminPassword123"
+}
+
+Response (200 OK):
+{
+  "success": true,
+  "message": "Login successful",
+  "token": "eyJhbGc...",
+  "user": {
+    "id": 1,
+    "username": "admin",
+    "email": "admin@example.com",
+    "role": "Admin"
+  }
+}
+```
+
+**Employee пользователь (только просмотр):**
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "username": "employee",
+  "password": "EmployeePassword123"
+}
+
+Response (200 OK):
+{
+  "success": true,
+  "message": "Login successful",
+  "token": "eyJhbGc...",
+  "user": {
+    "id": 2,
+    "username": "employee",
+    "email": "employee@example.com",
     "role": "Employee"
   }
 }
@@ -480,6 +584,43 @@ Authorization: Bearer {token}
 
 ## Тестирование
 
+### Тестирование RBAC с Seed данными
+
+Использование готовых тестовых пользователей:
+
+**Тестовый сценарий 1: Проверка Admin доступа**
+
+```bash
+# 1. Запустите приложение
+dotnet run
+
+# 2. Откройте http://localhost:3000
+# 3. Залогиньтесь под admin
+#    Username: admin
+#    Password: AdminPassword123
+
+# 4. Проверьте:
+✅ Navbar показывает "Admin"
+✅ Кнопка "+ Add Employee" видна
+✅ Кнопки "Edit" и "Delete" видны
+✅ Можете создавать новых сотрудников
+```
+
+**Тестовый сценарий 2: Проверка Employee доступа**
+
+```bash
+# 1. Выйдите из приложения (Logout)
+# 2. Залогиньтесь под employee
+#    Username: employee
+#    Password: EmployeePassword123
+
+# 3. Проверьте:
+✅ Navbar показывает "Employee"
+✅ Кнопка "+ Add Employee" скрыта
+✅ Кнопки "Edit" и "Delete" скрыты
+✅ Видите только информацию о сотрудниках (read-only)
+```
+
 ### Покрытие тестами
 
 | Слой | Количество тестов | Покрытие |
@@ -629,6 +770,14 @@ React Frontend  →  HTTP Request  →  API Controller
 - **API Documentation** — Swagger/OpenAPI
 - **Git Version Control** — осмысленные коммиты
 
+### Концепции инициализации данных
+
+- **Database Seeding** — автоматическое добавление начальных данных
+- **Design-time DbContext** — использование конфигурации из Program.cs
+- **Reproducible Setup** — одна команда `dotnet run` = готовое окружение
+- **Test Data** — тестовые пользователи и сотрудники для разработки
+- **Migration Integration** — seeder запускается после миграций
+
 ***
 
 ## Безопасность
@@ -651,5 +800,3 @@ React Frontend  →  HTTP Request  →  API Controller
 ## Автор
 
 **SkyGet0**
-
-***
