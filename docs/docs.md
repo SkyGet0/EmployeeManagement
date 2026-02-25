@@ -24,8 +24,10 @@
 | **JWT** | 8.15.0 |
 | **xUnit** | 2.9.3 |
 | **AutoMapper** | 12.0.1 |
+| | |
 
 ### Frontend
+||
 |------------|
 | **React** |
 | **React Router** |
